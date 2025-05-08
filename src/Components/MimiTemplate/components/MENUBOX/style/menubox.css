@@ -1,0 +1,19 @@
+.mi-block-menu {
+    display: grid;
+    grid-template-columns: minmax(min-content, min-content) auto minmax(min-content, min-content);
+    border: 1px solid var(--row-divider-color);
+}
+
+.mi-block-menu > div:not(*:last-child) {
+    border-right: 1px solid var(--row-divider-color);
+}
+
+.mi-block-menu a {
+    transition: all ease 1.3s;
+    box-shadow: 0px 0px 0px var(--link-color);
+}
+.mi-block-menu .mi-active {
+    /* background-color: var(--drawer-gray-section-color); */
+    /* border-bottom: 3px solid var(--link-color); */
+    box-shadow: 0px 3px 0px var(--accent-arstel-color);
+}

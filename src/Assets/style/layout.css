@@ -1,0 +1,118 @@
+.mi-container {
+    display: block;
+    width: 100%;
+}
+.mi-pa-3 {
+    padding: 3px;
+}
+.mi-pa-4 {
+    padding: 4px;
+}
+.mi-pa-5 {
+    padding: 5px;
+}
+.mi-pa-6 {
+    padding: 6px;
+}
+.mi-pa-9 {
+    padding: 9px;
+}
+.mi-pa-12 {
+    padding: 12px;
+}
+
+.mi-mt-12 {
+    margin-top: 12px;
+}
+.mi-mt-6 {
+    margin-top: 6px;
+}
+
+.mi-flex {
+    display: flex;
+}
+.mi-flex-space {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.mi-br-3 {
+    border-radius: 3px;
+}
+.mi-br-6 {
+    border-radius: 5px;
+}
+.mi-br-9 {
+    border-radius: 9px;
+}
+
+
+.mi-page-wrapper {
+    padding-top: 32px;
+}
+
+.mi-ska-mw-1400 {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+@media screen and (max-width: 1400px) {
+    .mi-ska-mw-1400 {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+
+
+.mi-layout-leftsidebar {
+    display: grid;
+    grid-template-columns: 320px auto;
+    grid-gap: 12px;
+}
+
+
+
+
+
+
+
+
+
+.mimi-layout-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 300px auto;
+}
+
+
+.mimi-slot-stack {
+    display: grid;
+    padding: 9px;
+    grid-gap: 12px;
+    
+}
+
+.mimi-slot {
+    display: flex;
+    background-color: antiquewhite;
+    border-radius: 1rem;
+    min-height: 2rem;
+    width: 100%;
+    box-shadow: 1px 1px 12px gray;
+    flex-direction: column;
+}
+
+.mimi-slot-header {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 40px auto 40px;
+}
+
+.mi-leftalign {
+    text-align: left;
+}

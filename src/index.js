@@ -4,22 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ConfigProvider, theme } from 'antd';
+import { StateProvider } from './Components/ComStateProvider25/ComStateProvider25';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <ConfigProvider
-            theme={{
-      // 1. Use dark algorithm
-    //   algorithm: theme.darkAlgorithm,
-
-      // 2. Combine dark algorithm and compact algorithm
-      // algorithm: [theme.darkAlgorithm, theme.compactAlgorithm],
-    }}
-    >
+      <StateProvider>
         <App />
 
-    </ConfigProvider>
+      </StateProvider>
+
+    
     </React.StrictMode>
 
 );

@@ -24,7 +24,7 @@
     --drawer-bg-color: #ffffffa1;
     --drawer-gray-section-color: #00000017;
 
-    --icon-color-std: #767b82;
+    --icon-color-std: #969ea8;
     --icon-color-std-hover: #4a4c50;
 
     --column-divider-color: #00000038;
@@ -35,8 +35,28 @@
     --link-color-faded: #2d4153;
 
     --accent-arstel-color: #ee741d;
+
+    --second-text-color: #4f4f4f;
+    --third-text-color: #8d8d8d;
 }
 
 .mi-bg-base {
     background-color: var(--block-background);
+}
+
+.markdown-body--light {
+  --color-canvas-default: #ffffff10;
+  --color-text-primary: #000000;
+  --color-fg-default: #4c535a;
+  --color-prettylights-syntax-constant: #611c1c;
+  --color-neutral-muted: #e7e5d8;
+  --color-canvas-subtle: #e1ebec;
+      --md-editor-box-shadow-color: #a2bac7;
+  /* и другие переменные для светлой темы */
+}
+.markdown-body--light.w-md-editor-fullscreen {
+    --color-canvas-default: #fff;
+}
+.wmde-markdown {
+    font-size: unset !important;
 }

@@ -1,0 +1,8 @@
+.mi-claim-card {
+    border-radius: 3px;
+    border: 1px solid var(--column-divider-color);
+}
+.mi-claim-card-wrapper {
+    margin-bottom: 22px;
+
+}

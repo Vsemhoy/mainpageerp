@@ -20,11 +20,21 @@ export function StateProvider({ children }) {
     target_section: 0,
   });
 
+  const [editedComment, setEditedComment] = useState(0);
+  const [commentText, setCommentText] = useState('');
+
   // Геттеры для каждого свойства
 //   const getText = useCallback(() => state.text, [state.text]);
   const getLocation = useCallback(() => state.location, [state.location]);
   const getTargetUserId = useCallback(() => state.target_user_id, [state.target_user_id]);
   // ... остальные геттеры по аналогии
+
+    const setEditedCommentId = useCallback((newId) => {
+      setEditedComment(newId);
+    }, []);
+      const setEditedCommentText = useCallback((nexText) => {
+      setCommentText(nexText);
+    }, []);
 
     // Сеттеры для каждого свойства
     const setText = useCallback((newText) => {
@@ -78,7 +88,11 @@ export function StateProvider({ children }) {
       setLocation,
       // ... остальные геттеры и сеттеры
       setMultiple,
-      resetState
+      resetState,
+      setEditedCommentId,
+      setEditedCommentText,
+      editedComment,
+      commentText,
     }}>
       {children}
     </StateContext.Provider>

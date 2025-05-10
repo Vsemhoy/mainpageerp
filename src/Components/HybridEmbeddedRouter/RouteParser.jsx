@@ -56,6 +56,7 @@ export const ParseRoute = (url, setNewState = false) => {
         } else
 
         if (element.param.toLowerCase() === 'task'){
+            console.log('result', result)
             result.target_task_id = parseInt(element.value);
         } else
 
@@ -134,6 +135,21 @@ const getLocationName = (loc, result) => {
                     result.target_claim_id = targ;
                 };
                 result.location = 'claimpage';
+                return result;
+            }
+        }
+
+        if (q[0].toLowerCase() == 'tasks'){
+            if (q[1].toLowerCase() == 'editor'){
+                // Если явно указано, что редактор, то открываем редактор, иначе - просмотрщик
+                result.location = 'taskeditor';
+                return result;
+            } else {
+                 let targ = parseInt(q[1]);
+                if (targ){
+                    result.target_claim_id = targ;
+                };
+                result.location = 'taskpage';
                 return result;
             }
         }

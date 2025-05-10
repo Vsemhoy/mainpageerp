@@ -21,6 +21,7 @@ export function StateProvider({ children }) {
   });
 
   const [editedComment, setEditedComment] = useState(0);
+  const [editedCommentParent, setEditedCommentParent] = useState(0);
   const [commentText, setCommentText] = useState('');
 
   // Геттеры для каждого свойства
@@ -31,6 +32,9 @@ export function StateProvider({ children }) {
 
     const setEditedCommentId = useCallback((newId) => {
       setEditedComment(newId);
+    }, []);
+    const setEditedCommentParentId = useCallback((newId) => {
+      setEditedCommentParent(newId);
     }, []);
       const setEditedCommentText = useCallback((nexText) => {
       setCommentText(nexText);
@@ -93,6 +97,8 @@ export function StateProvider({ children }) {
       setEditedCommentText,
       editedComment,
       commentText,
+      editedCommentParent,
+      setEditedCommentParentId,
     }}>
       {children}
     </StateContext.Provider>

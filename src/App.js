@@ -372,7 +372,7 @@ function App() {
       {state.location === 'claimpage' && <ClaimPage />}
       {state.location === 'claimeditor' && <ClaimEditorPage25 />}
 
-      {state.location === 'executor' && <ExecutorListPage />}
+      {state.location === 'executor' && <ExecutorEditorPage />}
       {state.location === 'execeditor' && <ExecutorEditorPage />}
 
       {state.location === 'taskeditor' && <TaskEditorPage />}

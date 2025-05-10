@@ -17,8 +17,11 @@ const StackComment = (props) => {
     
     const [itemId, setItemId] = useState(useId());
 
-    const [itemBaseText, setItemBaseText] = useState('We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.');
+    const [baseItemText, setBaseItemText] = useState('We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.');
     const [itemText, setItemText] = useState('We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.');
+
+        const [baseIsMarkdown, setBaseIsMarkdown] = useState(false);
+        const [isMarkdown, setIsMarkdown] = useState(false);
 
     const handleOpenEditor = ()=>{
         setCreateMode(false);
@@ -40,15 +43,22 @@ const StackComment = (props) => {
     }
 
     const handleDiscardChange = ()=>{
-        setItemText(itemBaseText);
+        setItemText(baseItemText);
         setOpenEditor(false);
         setEditedCommentId(0);
+        setIsMarkdown(baseIsMarkdown);
     }
 
     const handleSaveComment = (value) => {
         setItemText(value);
+        setBaseItemText(value);
         setOpenEditor(false);
         setEditedCommentId(0);
+        setBaseIsMarkdown(isMarkdown);
+    }
+
+    const handleChangeFormat = (value) => {
+        setIsMarkdown(value);
     }
 
     return (
@@ -63,9 +73,16 @@ const StackComment = (props) => {
                         8 hours ago {itemId}
                     </div>
                     <div className="stack-comment-text">
+                    {isMarkdown ? (
                         <MDEditor.Markdown
                             className="markdown-body--light"
                         source={itemText} />
+                    ) : (
+                        <div className="comment-body-light"
+                            style={{ whiteSpace: 'pre-line' }}>
+                            {itemText}
+                        </div>
+                    )}
                     </div>
                     <div className="mi-flex-space">
                         <div className={'mi-flex'}>
@@ -99,6 +116,7 @@ const StackComment = (props) => {
                     text={itemText}
                     on_discard={handleDiscardChange}
                     on_save={handleSaveComment}
+                    on_change_format={handleChangeFormat}
                 />
             )}
             {openStack && level === 1 && (

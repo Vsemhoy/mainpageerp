@@ -1,7 +1,9 @@
 .mi-block-menu {
     display: grid;
     grid-template-columns: minmax(min-content, min-content) auto minmax(min-content, min-content);
-    border: 1px solid var(--row-divider-color);
+    /* border: 1px solid var(--row-divider-color); */
+
+    box-shadow: 0px 16px 20px -17px 
 }
 
 .mi-block-menu > div:not(*:last-child) {
@@ -15,5 +17,7 @@
 .mi-block-menu .mi-active {
     /* background-color: var(--drawer-gray-section-color); */
     /* border-bottom: 3px solid var(--link-color); */
-    box-shadow: 0px 3px 0px var(--accent-arstel-color);
+    /* box-shadow: 0px 3px 0px var(--accent-arstel-color);
+     */
+     box-shadow: 0px 3px 0px var(--accent-arstel-color), 0px 14px 36px -9px var(--accent-arstel-color);
 }

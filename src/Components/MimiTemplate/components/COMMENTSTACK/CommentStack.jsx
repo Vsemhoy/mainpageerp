@@ -7,17 +7,14 @@ const CommentStack = ({label, children}) => {
 
     return (
         <div className={'mi-comment-stack'}>
-        <div></div>
-        <div className={'mi-comment-stack-collection'}>
+            <div></div>
+            <div className={'mi-comment-stack-collection'}>
 
-            <StackComment />
-            <StackComment />
-            <StackComment />
-        
+                <StackComment />
+                <StackComment />
+                <StackComment />
 
-    
-
-        </div>
+            </div>
         </div>
     )
 }

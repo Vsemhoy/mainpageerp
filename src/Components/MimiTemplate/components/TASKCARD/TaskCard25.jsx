@@ -1,13 +1,14 @@
 import React, { useId, useState } from "react";
 
-import './style/claimcard.css';
+import './style/taskcard.css';
 import { ApartmentOutlined, CommentOutlined, EditOutlined } from "@ant-design/icons";
 import CommentStack from "../COMMENTSTACK/CommentStack";
 import Her from "../../../HybridEmbeddedRouter/Her";
 import TrackStatusItem, { TrackStatuses } from "../../../Definitions/StatusTrackDefinition";
 import TaskStack from "../TASKSTACK/TaskStack";
+import TaskStatusItem, { TaskStatuses } from "../../../Definitions/StatusTaskDefinition";
 
-const ClaimCard25 = (props)=>{
+const TaskCard25 = (props)=>{
     const [openEditor, setOpenEditor] = useState(false);
     const [openComments, setOpenComments] = useState(false);
     const [countComments, setCountComments] = useState(2);
@@ -25,27 +26,32 @@ const ClaimCard25 = (props)=>{
     }
 
     return (
-        <div className={`mi-claim-card-wrapper ${( openTasks) && (countTasks) ? "mi-uncooxed" : "" }`}>
-            <div className="mi-claim-card">
+        <div className={`mi-task-card-wrapper ${(openTasks) && (countTasks) ? "mi-uncooxed" : "" }`}>
+            <div className="mi-task-card">
                 <div className={'mi-pa-6 mi-centered'}>
                     <div className="mi-bagic" style={{marginBottom: '6px'}}>
                         MA
                     </div>
                     
-                    <TrackStatusItem item={TrackStatuses[1]} />
+                    <TaskStatusItem item={TaskStatuses[1]} />
                     </div>
                 <div>
-                    <div className={'mi-flex'}>
+                    <div className={''}>
                         <div className={'mi-pa-6 mi-card-title'}>
                             Сделать много всякой всячины и так далее
-                            Сделать много всякойСделать много всякой всячины и так далее
-                            Сделать много всякой
+                        </div>
+
+                        <div className={'mi-pa-6 mi-card-text'}>
+                            Сделать много всякой всячины и так далее
+                            Сделать много всякой всячины и так далее
+                            Сделать много всякой всячины и так далее
+                            Сделать много всякой всячины и так далее
                         </div>
                     </div>
 
                     <div className={'mi-flex-space'}>
                         <div>
-                            <Her href={'claims/editor/' + itemId + '&claim=' + itemId} >
+                            <Her href={'tasks/editor/' + itemId + '&task=' + itemId} >
                             <div className={'mi-card-meta-info'}>
                                 <EditOutlined /> Редактировать
                             </div>
@@ -82,4 +88,4 @@ const ClaimCard25 = (props)=>{
     );
 }
 
-export default ClaimCard25;
+export default TaskCard25;

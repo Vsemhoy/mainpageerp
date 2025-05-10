@@ -4,7 +4,7 @@ import MenuBox from "../../../Components/MimiTemplate/components/MENUBOX/MenuBox
 import BreadCrumbBox from "../../../Components/MimiTemplate/components/BREADCRUMBS/BreadCrumbBox";
 import ClaimEditorSidebar from "./components/ClaimEditorSidebar";
 import { Affix, Button, Checkbox, Input, Tabs } from "antd";
-import MDEditor from "@uiw/react-md-editor";
+import MDEditor, { commands } from "@uiw/react-md-editor";
 import FilterRow from './../../../Components/MimiTemplate/components/FORMS/FilterRow';
 
 
@@ -68,6 +68,32 @@ const ClaimEditorPage = (props) => {
                                     <MDEditor
                                         preview={'edit'}
                                         className="markdown-body--light"
+                                                        commands={[
+                    commands.bold,
+                    commands.italic,
+                    commands.strikethrough,
+                    commands.hr,
+                    commands.divider,
+                    commands.title2,
+                    commands.title3,
+                    commands.title4,
+                    commands.title5,
+                    commands.divider,
+                    commands.link,
+                    commands.issue,
+                    commands.quote,
+                    commands.code,
+                    commands.codeBlock,
+                    commands.comment,
+                    commands.image,
+                    commands.table,
+                    commands.divider,
+                    commands.unorderedListCommand,
+                    commands.orderedListCommand,
+                    commands.checkedListCommand,
+                    commands.divider,
+                    commands.help
+                ]}
                                     ></MDEditor>
                                 </FilterRow>
                             </div>
@@ -86,6 +112,33 @@ const ClaimEditorPage = (props) => {
                                     <MDEditor
                                         preview={'edit'}
                                         className="markdown-body--light"
+                                        visibleEditors={['code']}
+                commands={[
+                    commands.bold,
+                    commands.italic,
+                    commands.strikethrough,
+                    commands.hr,
+                    commands.divider,
+                    commands.title2,
+                    commands.title3,
+                    commands.title4,
+                    commands.title5,
+                    commands.divider,
+                    commands.link,
+                    commands.issue,
+                    commands.quote,
+                    commands.code,
+                    commands.codeBlock,
+                    commands.comment,
+                    commands.image,
+                    commands.table,
+                    commands.divider,
+                    commands.unorderedListCommand,
+                    commands.orderedListCommand,
+                    commands.checkedListCommand,
+                    commands.divider,
+                    commands.help
+                ]}
                                     ></MDEditor>
                                 </FilterRow>
                             </div>

@@ -1,8 +1,20 @@
 .mi-claim-card {
     border-radius: 3px;
-    border: 1px solid var(--column-divider-color);
+    /* border: 1px solid var(--column-divider-color); */
+    display: grid;
+    grid-template-columns: 48px auto;
 }
 .mi-claim-card-wrapper {
-    margin-bottom: 22px;
+    margin-bottom: 12px;
+    padding-right: 4px;
+}
 
+.mi-uncooxed {
+    box-shadow: -3px 0px 0px 0px #0078d496;
+    /* border */
+    /* background: #b6cfd84f; */
+}
+.mi-uncooxed.mi-claim-card-wrapper {
+    border: 1px solid #0078d496;
+    border-radius: 6px;
 }

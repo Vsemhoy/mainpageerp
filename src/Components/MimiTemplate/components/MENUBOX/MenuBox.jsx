@@ -18,7 +18,7 @@ const MenuBox = (props) => {
   },[state.location])
 
   return (
-    <div className={'mi-container mi-bg-base mi-block-menu mi-br-9'}>
+    <div className={'mi-container mi-bg-base mi-block-menu mi-br-3'}>
       <div className={'mi-flex'}>
         <Her href={'home'}>
           <div className={''}>

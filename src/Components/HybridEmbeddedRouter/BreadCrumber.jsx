@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useId, useState } from 'react';
 import { StateContext } from '../ComStateProvider25/ComStateProvider25';
 import Her from './Her';
 
@@ -86,7 +86,7 @@ const BreadCrumber = (props) => {
 
     return (
         <>
-            {links.map((loc)=>(<div>{loc}</div>))}
+            {links.map((loc, index)=>(<div key={`kefir${index}`}>{loc}</div>))}
         </>
     );
 }

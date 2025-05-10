@@ -1,6 +1,6 @@
-import React, { useState, useId } from 'react';
+import React, { useState, useId, useEffect } from 'react';
 import './style/sortablekanban.css';
-import { Button, Dropdown, Empty } from 'antd';
+import { Button, Drawer, Dropdown, Empty } from 'antd';
 import dayjs from 'dayjs';
 import { BarsOutlined } from '@ant-design/icons';
 
@@ -32,8 +32,17 @@ const items: MenuProps['items'] = [
   },
 ];
 
-const ExecutorKanbanBoard = () => {
+const ExecutorKanbanBoard = (props) => {
   const now = new Date();
+
+  const [openReleases, setOpenReleases] = useState(false);
+  const [openClaims,   setOpenClaims]   = useState(false);
+
+  const [baseReleaseTasks, setBaseReleaseTasks] = useState([]);
+  const [releaseTasks, setReleaseTasks] = useState([]);
+  const [baseClaimStack, setBaseClaimStack] = useState([]);
+
+
     const [tasks, setTasks] = useState([
             { id: '1', title: 'Разработать API', description: 'Создать endpoints для пользователей', status: 'waiting', priority: 'high', updated_at: new Date(now - 1000 * 60 * 60 * 24 * 2).toISOString() },
             { id: '2', title: 'Написать тесты', description: 'Покрыть модульными тестами сервис авторизации', status: 'in_progress', priority: 'medium', updated_at: new Date(now - 1000 * 60 * 60 * 24).toISOString() },
@@ -65,6 +74,15 @@ const ExecutorKanbanBoard = () => {
         e.target.classList.add('dragging');
     };
 
+    useEffect(() => {
+      console.log('props.open_claims', props.open_claims)
+      setOpenClaims(props.open_claims);
+    }, [props.open_claims]);
+
+    useEffect(() => {
+      setOpenReleases(props.open_releases);
+    }, [props.open_releases]);
+
     const handleDragOverColumn = (e, columnId) => {
         e.preventDefault();
         setDragOverColumn(columnId);
@@ -80,19 +98,40 @@ const ExecutorKanbanBoard = () => {
         
         if (!draggedItem) return;
         
-        // Обновляем статус задачи
-        const updatedTasks = tasks.map(task => {
-            if (task.id === draggedItem.id) {
-                return {
-                    ...task, 
-                    status: columnId,
-                    updated_at: new Date().toISOString() // Обновляем временную метку
-                 };
-            }
-            return task;
-        });
+        if (columnId === 'releaseTasks')
+        {
+          console.log('draggedItem', draggedItem)
+          // Если это колонка с релизами, бросаем в неё дубликат
+          // Уже зарелизенные задачи сюда бросить нельзя!
+          // const updatedTasks = releaseTasks.map(task => {
+          //     if (task.id === draggedItem.id) {
+          //         return {
+          //             ...task, 
+          //             status: columnId,
+          //             updated_at: new Date().toISOString() // Обновляем временную метку
+          //          };
+          //     }
+          //     return task;
+          // });
+          setReleaseTasks([...releaseTasks, draggedItem]);
+
+        } else {
+
+          // Обновляем статус задачи
+          const updatedTasks = tasks.map(task => {
+              if (task.id === draggedItem.id) {
+                  return {
+                      ...task, 
+                      status: columnId,
+                      updated_at: new Date().toISOString() // Обновляем временную метку
+                   };
+              }
+              return task;
+          });
+          setTasks(updatedTasks);
+        }
+
         
-        setTasks(updatedTasks);
         resetDragState();
         
         // Сбрасываем подсветку колонок
@@ -155,6 +194,20 @@ const ExecutorKanbanBoard = () => {
 //     resetDragState();
 // };
 
+
+
+  const handleReleaseClose = ()=>{
+    setOpenReleases(false);
+    if (props.on_close_release){
+      props.on_close_release(false);
+    }
+  }
+  const handleClaimClose = ()=>{
+    setOpenClaims(false);
+    if (props.on_close_claims){
+      props.on_close_claims(false);
+    }
+  }
 
 
     return (
@@ -220,6 +273,74 @@ const ExecutorKanbanBoard = () => {
                     </div>
                 </div>
             )})}
+
+            <div>
+              <Drawer title="Релизы"
+                mask={false}
+               placement="left" onClose={handleReleaseClose} open={openReleases}>
+                <p>Some contents...</p>
+                <div>
+                  <div className='mi-sortable-column-wrapper mi-bg-base' key={`sortcol_${'releaseTasks'}`}>
+                    <div className={'mi-pa-12'}><span>REleases</span>
+                    </div>
+                    
+
+                    <div 
+                        className='mi-sortable-column'
+                        onDragOver={(e) => handleDragOverColumn(e, 'releaseTasks')}
+                        onDrop={(e) => handleDropOnColumn(e, 'releaseTasks')}
+                        data-status={'releaseTasks'}
+                        style={{
+                            minHeight: '500px',
+                            border: dragOverColumn === 'releaseTasks' ? '2px dashed #1890ff' : 'none'
+                        }}
+                    >
+                        {/* {columnTasks.length === 0 && (
+                            <div className="empty-column-placeholder">
+                                <Empty />
+                            </div>
+                        )} */}
+                        
+                        {releaseTasks
+                            .map((task) => (
+                                <div
+                                    key={'rel' + task.id}
+                                    className='sort-item'
+                                    draggable
+                                    // onDragStart={(e) => handleDragStart(e, task)}
+                                    // onDragEnd={handleDragEnd}
+                                    style={{
+                                        borderLeft: `4px solid ${getPriorityColor(task.priority)}`,
+                                        opacity: draggedItem?.id === task.id ? 0.5 : 1
+                                    }}
+                                >
+                                    <div className='sort-head'>
+                                      <div>#{task.id}</div>
+                                      <Dropdown menu={{ items }} placement="bottomRight">
+                                      <div className='mi-sort-head-trig'><BarsOutlined /></div>
+                                      </Dropdown>
+                                    </div>
+                                    <div className='task-content'>
+                                        <h4>{task.title}</h4>
+                                        <p>{task.description}</p>
+                                    </div>
+                                </div>
+                            ))}
+                      </div>
+                    </div>
+                </div>
+              </Drawer>
+
+
+              <Drawer title="Заявки" 
+              mask={false}
+              placement="right" onClose={handleClaimClose} open={openClaims}>
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+              </Drawer>
+            </div>
+
         </div>
     );
 };

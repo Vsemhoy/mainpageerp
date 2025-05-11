@@ -227,16 +227,23 @@ const ExecutorKanbanBoard = (props) => {
               
               return (
                 <div className='mi-sortable-column-wrapper mi-bg-base' key={`sortcol_${col.id}`}>
-                    <div className={'mi-pa-12'}><span>{col.title}</span>
-                    </div>
+                    <div className={'mi-pa-12 mi-flex-space'}><span>{col.title}</span>
+                    
                     {col.id === 1 || col.id === 'waiting' && (
-                      <div className={'mi-pa-12'}>
+                      <div>
                       <Button block
                         onClick={handleCreateTask}
-                      >Create</Button>
+                      >Добавить</Button>
                       </div>
                     )}
-
+                    {col.id === 3 || col.id === 'testing' && (
+                      <div>
+                      <Button block
+                        onClick={handleCreateTask}
+                      >Завершить</Button>
+                      </div>
+                    )}
+                    </div>
                     <div 
                         className='mi-sortable-column'
                         onDragOver={(e) => handleDragOverColumn(e, col.id)}

@@ -4,7 +4,7 @@ import MenuBox from "../../../Components/MimiTemplate/components/MENUBOX/MenuBox
 import BreadCrumbBox from "../../../Components/MimiTemplate/components/BREADCRUMBS/BreadCrumbBox";
 import ExecutorKanbanBoard from "./components/ExecutorKanbanBoard";
 import { Button, Dropdown, Select } from "antd";
-import { BilibiliOutlined, CodeSandboxOutlined, TwitchFilled, TwitchOutlined } from "@ant-design/icons";
+import { BilibiliOutlined, CodeSandboxOutlined, TwitchFilled, TwitchOutlined, CloseOutlined } from "@ant-design/icons";
 
 const ExecutorEditorPage = (props) => {
     const {state, setState} = useContext(StateContext);
@@ -49,8 +49,11 @@ const ExecutorEditorPage = (props) => {
                             />
                         </div>
                         <div className="mi-flex" style={{gridGap: '12px'}}>
-                            <Button danger icon={<CodeSandboxOutlined />} >
-                                Активная заявка #5632456
+                            <Button danger icon={<CodeSandboxOutlined />} 
+                                className={'mi-super-accent'}
+                            >
+                            <span>Активная заявка #5632456</span>
+                                <span><CloseOutlined /> </span>
                             </Button>
                         </div>
                         <div className="mi-flex" style={{gridGap: '12px'}}>
@@ -94,6 +97,8 @@ const ExecutorEditorPage = (props) => {
 
 
             </div>
+
+
 
         </div>
         

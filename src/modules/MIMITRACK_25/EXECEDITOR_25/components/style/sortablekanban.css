@@ -1,10 +1,10 @@
 .mi-so-container {
-    display: flex;
-    grid-gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(6, auto);
 }
 .mi-sortable-column-wrapper {
-    /* border: 1px solid gray; */
     border-radius: 6px;
+    border: 2px solid white;
     
 }
 .mi-sortable-column {

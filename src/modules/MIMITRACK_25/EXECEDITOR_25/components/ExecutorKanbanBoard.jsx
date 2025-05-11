@@ -3,6 +3,7 @@ import './style/sortablekanban.css';
 import { Button, Drawer, Dropdown, Empty } from 'antd';
 import dayjs from 'dayjs';
 import { BarsOutlined } from '@ant-design/icons';
+import TaskEditorModal25 from '../../../../Components/MimiTemplate/commoncom/TASKMODAL/TaskEditorModal25';
 
 
 const items: MenuProps['items'] = [
@@ -42,6 +43,8 @@ const ExecutorKanbanBoard = (props) => {
   const [releaseTasks, setReleaseTasks] = useState([]);
   const [baseClaimStack, setBaseClaimStack] = useState([]);
 
+  const [openTaskEditor, setOpenTaskEditor] = useState(false);
+  const [editedTask, setEditedTask] = useState(null);
 
     const [tasks, setTasks] = useState([
             { id: '1', title: 'Разработать API', description: 'Создать endpoints для пользователей', status: 'waiting', priority: 'high', updated_at: new Date(now - 1000 * 60 * 60 * 24 * 2).toISOString() },
@@ -209,6 +212,12 @@ const ExecutorKanbanBoard = (props) => {
     }
   }
 
+  const handleOpenTaskEditor = (id) => {
+    setEditedTask(id);
+    setOpenTaskEditor(true);
+    console.log('id', id);
+  }
+
 
     return (
         <div className='mi-so-container'>
@@ -248,6 +257,7 @@ const ExecutorKanbanBoard = (props) => {
                             
                             .map((task) => (
                                 <div
+                                    onDoubleClick={()=>{handleOpenTaskEditor(task.id)}}
                                     key={task.id}
                                     className='sort-item'
                                     draggable
@@ -341,6 +351,12 @@ const ExecutorKanbanBoard = (props) => {
               </Drawer>
             </div>
 
+
+          <TaskEditorModal25
+            open={openTaskEditor}
+            task_id={editedTask}
+            on_close={()=>{setOpenTaskEditor(false)}}
+            />
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, DatePicker, List, Radio, Row, Space, Tabs } from 'antd';
 import { Button, Card, Checkbox, Empty, Tag, Transfer, Typography, TabsProps } from "antd";
 import dayjs from "dayjs";
@@ -16,9 +16,14 @@ import Her from "./../../../Components/HybridEmbeddedRouter/Her";
   }
 
 const HomePage = (props) => {
+    const [userData, setUserData] = useState(null);
+
     const [selectedFullDate, setSelectedFullDate] = useState(dayjs());
 
-
+    useEffect(()=>{
+        setUserData(props.user_data)
+        console.log(props);
+    },[props.user_data]);
 
 
     const changeFullDate = (date) => {
@@ -29,7 +34,7 @@ const HomePage = (props) => {
         console.log(ev);
     };
 
-
+    console.log(userData);
     
     return (
         <div style={{background: "#ededed", padding: '12px', marginTop: '22px', minHeight: "calc(100vh - 80px)"}}>
@@ -37,7 +42,7 @@ const HomePage = (props) => {
     <Row gutter={16}>
 
         
-    {props.userdata && props.userdata.acls && props.userdata.acls.includes(2) ? (
+    {userData && userData.acls && userData.acls.includes(2) ? (
     <Col span={8}>
         <a href="/time" >
       <Card variant="borderless" className="home-card">
@@ -63,7 +68,7 @@ const HomePage = (props) => {
     </Col>
     ): ""}
 
-    {props.userdata && props.userdata.acls && props.userdata.acls.includes(51) ? (
+    {userData && userData.acls && userData.acls.includes(51) ? (
             <Col span={8}>
                 <a href="/newsales" >
             <Card variant="borderless" className="home-card">
@@ -89,6 +94,7 @@ const HomePage = (props) => {
             </Col>
         ): ""}
 
+{userData && userData.acls && userData.acls.includes(2) ? (
         <Col span={8}>
             <Her href='mtrack'>
 
@@ -113,7 +119,7 @@ const HomePage = (props) => {
             </Card>
             </Her>
         </Col>
-
+  ): ""}
     {/* <Col span={8}>
       <Card title="Сообщить об ошибке" variant="borderless">
         <Input ></Input>

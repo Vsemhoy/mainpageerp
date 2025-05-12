@@ -363,7 +363,7 @@ function App() {
 
 
 
-      {state.location === '' && <HomePage />}
+      {state.location === '' && <HomePage user_data={userAct}/>}
       {state.location === 'home' && <HomePage />}
 
       {state.location === 'mtrack' && <ReleasePage />}

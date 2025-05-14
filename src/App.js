@@ -44,6 +44,7 @@ import ReleaseListPage from './modules/MIMITRACK_25/RELEASES_25/ReleaseListPage2
 import QuestionListPage from './modules/MIMITRACK_25/QUESTIONS_25/QuestionListPage25';
 import SettingsPage from './modules/MIMITRACK_25/SETTINGS_25/SettingsPage25';
 import ParseRoute from './Components/HybridEmbeddedRouter/RouteParser';
+import StateBar25 from './Components/MimiTemplate/components/STATEBAR/StateBar25';
 
 
 
@@ -423,6 +424,7 @@ function App() {
 
       </Drawer>
 
+        <StateBar25 />
 
       </div>
     </Router>

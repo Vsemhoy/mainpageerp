@@ -24,6 +24,8 @@ export function StateProvider({ children }) {
   const [editedCommentParent, setEditedCommentParent] = useState(0);
   const [commentText, setCommentText] = useState('');
 
+  const [activeTask, setActiveTask] = useState('');
+
   // Геттеры для каждого свойства
 //   const getText = useCallback(() => state.text, [state.text]);
   const getLocation = useCallback(() => state.location, [state.location]);
@@ -38,6 +40,10 @@ export function StateProvider({ children }) {
     }, []);
       const setEditedCommentText = useCallback((nexText) => {
       setCommentText(nexText);
+    }, []);
+
+    const setActiveTaskItem = useCallback((task) => {
+      setActiveTask(task);
     }, []);
 
     // Сеттеры для каждого свойства
@@ -99,6 +105,9 @@ export function StateProvider({ children }) {
       commentText,
       editedCommentParent,
       setEditedCommentParentId,
+
+      activeTask,
+      setActiveTaskItem
     }}>
       {children}
     </StateContext.Provider>

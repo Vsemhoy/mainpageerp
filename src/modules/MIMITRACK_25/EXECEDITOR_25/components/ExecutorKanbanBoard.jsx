@@ -1,9 +1,11 @@
 import React, { useState, useId, useEffect } from 'react';
 import './style/sortablekanban.css';
+import './style/exectask.css';
 import { Button, Drawer, Dropdown, Empty } from 'antd';
 import dayjs from 'dayjs';
 import { BarsOutlined } from '@ant-design/icons';
 import TaskEditorModal25 from '../../../../Components/MimiTemplate/commoncom/TASKMODAL/TaskEditorModal25';
+import ExecTaskCard from './ExecTaskCard';
 
 
 const items: MenuProps['items'] = [
@@ -226,7 +228,7 @@ const ExecutorKanbanBoard = (props) => {
               const columnTasks = sortTasks(tasks.filter(task => task.status === col.id));
               
               return (
-                <div className='mi-sortable-column-wrapper mi-bg-base' key={`sortcol_${col.id}`}>
+                <div className={`mi-sortable-column-wrapper mi-bg-base mi-col-${col.id}`} key={`sortcol_${col.id}`}>
                     <div className={'mi-pa-12 mi-flex-space'}><span>{col.title}</span>
                     
                     {col.id === 1 || col.id === 'waiting' && (
@@ -263,29 +265,12 @@ const ExecutorKanbanBoard = (props) => {
                         {columnTasks
                             
                             .map((task) => (
-                                <div
-                                    onDoubleClick={()=>{handleOpenTaskEditor(task.id)}}
-                                    key={task.id}
-                                    className='sort-item'
-                                    draggable
-                                    onDragStart={(e) => handleDragStart(e, task)}
-                                    onDragEnd={handleDragEnd}
-                                    style={{
-                                        borderLeft: `4px solid ${getPriorityColor(task.priority)}`,
-                                        opacity: draggedItem?.id === task.id ? 0.5 : 1
-                                    }}
-                                >
-                                    <div className='sort-head'>
-                                      <div>#{task.id}</div>
-                                      <Dropdown menu={{ items }} placement="bottomRight">
-                                      <div className='mi-sort-head-trig'><BarsOutlined /></div>
-                                      </Dropdown>
-                                    </div>
-                                    <div className='task-content'>
-                                        <h4>{task.title}</h4>
-                                        <p>{task.description}</p>
-                                    </div>
-                                </div>
+                                <ExecTaskCard task={task}
+                                  on_drag_start={handleDragStart}
+                                  on_drag_end={handleDragEnd}
+                                  on_call_editor={handleOpenTaskEditor}
+                                  dragged_item={draggedItem}
+                                />
                             ))}
                     </div>
                 </div>

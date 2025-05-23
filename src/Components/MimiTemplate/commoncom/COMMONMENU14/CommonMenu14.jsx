@@ -57,7 +57,7 @@ const CommonMenu14 = (props) => {
         </Menu.Item>
         { acls.includes(4) && (
         <Menu.Item key="adjklfa" icon={<NotificationOutlined />}>
-          <a href='/time?location=notificator'>Нотификатор</a>
+          <a href='/skud/hr/notify'>Нотификатор</a>
         </Menu.Item>
         )}
         <Menu.Item key="logout" icon={<LogoutOutlined />}>
@@ -129,7 +129,7 @@ const CommonMenu14 = (props) => {
             <MenuItem
               icon={<CalendarOutlined />}
               key={'menu_52d35hg4'}>
-                <a href='/time'>СКУД
+                <a href='/skud'>СКУД
                 </a>
               </MenuItem>
          )}

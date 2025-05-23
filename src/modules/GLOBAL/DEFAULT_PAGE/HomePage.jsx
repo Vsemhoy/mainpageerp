@@ -44,7 +44,7 @@ const HomePage = (props) => {
         
     {userData && userData.acls && userData.acls.includes(2) ? (
     <Col span={8}>
-        <a href="/time" >
+        <a href="/skud" >
       <Card variant="borderless" className="home-card">
         <div className="sk-flex">
             <div className="hc-icon">

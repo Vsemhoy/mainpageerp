@@ -8,6 +8,7 @@ export const HTTP_HOST = document.querySelector('meta[name="host"]') ? document.
 export const HTTP_ROOT = HTTP_HOST ? HTTP_HOST.replace('time', '') : '';
 export const HOST_COMPONENT_ROOT = !PRODMODE ? '' : '/com/index';
 
+
 export const theme_1 = {
     // 1. Use dark algorithm
     components: {

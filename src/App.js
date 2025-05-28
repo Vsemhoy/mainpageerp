@@ -351,7 +351,6 @@ function App() {
           <div >
 
 
-
       <CommonMenu14 
         on_change_company={changeCompanyAction}
         on_show_notibar={showNotyBar}
@@ -384,12 +383,12 @@ function App() {
       {state.location === 'settings' && <SettingsPage />}
 
 
-      {state.location === 'releasepage' && <ReleasePage />}    
+      {state.location === 'releasepage' && <ReleasePage />}
 
 
 
 
-
+adsfaskdfjk lasjdlkfj klasjdfkl asd
 
       <Drawer
         closable

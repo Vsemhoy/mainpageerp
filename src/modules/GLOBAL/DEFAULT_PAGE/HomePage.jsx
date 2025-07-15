@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Col, DatePicker, List, Radio, Row, Space, Tabs } from 'antd';
 import { Button, Card, Checkbox, Empty, Tag, Transfer, Typography, TabsProps } from "antd";
 import dayjs from "dayjs";
-import { BarcodeOutlined, BugOutlined, CalendarOutlined, CiOutlined, QuestionCircleOutlined } from "@ant-design/icons";
+import { BarcodeOutlined, BugOutlined, CalendarOutlined, CiOutlined, HeatMapOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 import Input from "antd/es/input/Input";
  
 import Her from "./../../../Components/HybridEmbeddedRouter/Her";
@@ -70,7 +70,7 @@ const HomePage = (props) => {
 
     {userData && userData.acls && userData.acls.includes(51) ? (
             <Col span={8}>
-                <a href="/newsales" >
+                <a href="/sales" >
             <Card variant="borderless" className="home-card">
                 <div className="sk-flex">
                     <div className="hc-icon">
@@ -96,20 +96,20 @@ const HomePage = (props) => {
 
 {userData && userData.acls && userData.acls.includes(2) ? (
         <Col span={8}>
-            <Her href='mtrack'>
-
+          
+            <a href="/utilizare">
             <Card variant="borderless" className="home-card">
                 <div className="sk-flex">
                     <div className="hc-icon">
-                        <BugOutlined />
-
+                        
+                        <HeatMapOutlined />
                     </div>
                     <div className="hc-content">
                         <div className="hc-title">
-                            MTrack
+                            Utilizzzo
                         </div>
                         <div>
-                            Заявки, релизы и обновления
+                            Service uttis
                         </div>
                         <div>
                             2205
@@ -117,7 +117,7 @@ const HomePage = (props) => {
                     </div>
                 </div>
             </Card>
-            </Her>
+            </a>
         </Col>
   ): ""}
     {/* <Col span={8}>

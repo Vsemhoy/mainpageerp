@@ -138,7 +138,7 @@ const CommonMenu14 = (props) => {
             <MenuItem
             icon={<BarcodeOutlined />}
               key={'menu_52fdd3453f4'}>
-                <a href='/newsales'>Отдел продаж</a>
+                <a href='/sales'>Отдел продаж</a>
               </MenuItem>
           )}
           

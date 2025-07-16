@@ -387,7 +387,6 @@ function App() {
 
 
 
-
 adsfaskdfjk lasjdlkfj klasjdfkl asd
 
       <Drawer
@@ -424,7 +423,7 @@ adsfaskdfjk lasjdlkfj klasjdfkl asd
       </Drawer>
 
         <StateBar25 />
-
+        
       </div>
     </Router>
     </Layout>
